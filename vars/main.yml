@@ -1,0 +1,56 @@
+---
+# role: ansible-role-docker
+# file: vars/Alpine.yml
+
+_docker_packages:
+  default: []
+  Alpine:
+    - docker
+    - docker-bash-completion
+    - fuse-overlayfs
+    - docker-py
+  Archlinux:
+    - docker
+    - fuse-overlayfs
+    - python-docker
+  Debian:
+    - docker.io
+    - fuse-overlayfs
+    - python3-docker
+  Fedora:
+    - docker
+    - fuse-overlayfs
+    - python3-docker
+  Suse:
+    - docker
+    - docker-bash-completion
+    - fuse-overlayfs
+    - python3-docker
+
+docker_packages: >-
+  {{    _docker_packages[ansible_distribution]
+  if    _docker_packages[ansible_distribution] is defined
+  else  _docker_packages[ansible_os_family]
+  if    _docker_packages[ansible_os_family] is defined
+  else  _docker_packages['default'] }}
+
+_docker_compose_packages:
+  default: []
+  Alpine:
+    - docker-compose
+    - docker-compose-bash-completion
+  Archlinux:
+    - docker-compose
+  Debian:
+    - docker-compose
+  Fedora:
+    - docker-compose
+  Suse:
+    - python3-docker-compose
+
+docker_compose_packages: >-
+  {{    _docker_compose_packages[ansible_distribution]
+  if    _docker_compose_packages[ansible_distribution] is defined
+  else  _docker_compose_packages[ansible_os_family]
+  if    _docker_compose_packages[ansible_os_family] is defined
+  else  _docker_compose_packages['default'] }}

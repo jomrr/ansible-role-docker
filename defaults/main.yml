@@ -1,0 +1,20 @@
+---
+# role: ansible-role-docker
+# file: defaults/main.yml
+
+# The role is disabled by default, so you do not get in trouble.
+# Checked in tasks/main.yml which includes tasks/tasks.yml if enabled.
+docker_role_enabled: false
+
+# install docker compose.
+docker_compose: false
+
+# Docker daemon configuration. Write the config as dict in YAML notation.
+# It will be converted to JSON by the template.
+# see https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file
+# EXAMPLE:
+# docker_daemon:
+#   "storage-driver": "btrfs"
+#   "storage-opts":
+#     - "btrfs.min_space": "1G"
+docker_daemon: {}

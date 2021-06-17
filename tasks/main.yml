@@ -1,0 +1,7 @@
+---
+# role: ansible-role-docker
+# file: tasks/main.yml
+
+- name: "Check if ansible-role-docker is enabled"
+  include_tasks: tasks.yml
+  when: docker_role_enabled | bool

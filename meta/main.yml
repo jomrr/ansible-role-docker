@@ -1,0 +1,38 @@
+---
+# role: ansible-role-docker
+# file: meta/main.yml
+
+galaxy_info:
+  role_name: docker
+  author: jam82
+  description: Ansible role for setting up Docker CE.
+  company: ''
+
+  issue_tracker_url: https://github.com/jam82/ansible-role-docker/issues
+
+  license: MIT
+
+  min_ansible_version: "2.9"
+
+  platforms:
+    - name: Alpine
+      versions:
+        - any
+    - name: ArchLinux
+      versions:
+        - any
+    - name: Debian
+      versions:
+        - any
+    - name: Fedora
+      versions:
+        - any
+    - name: opensuse
+      versions:
+        - any
+    - name: Ubuntu
+      versions:
+        - any
+  galaxy_tags: []
+
+dependencies: []
