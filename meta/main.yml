@@ -5,7 +5,7 @@
 galaxy_info:
   role_name: docker
   author: jam82
-  description: Ansible role for setting up Docker CE.
+  description: Ansible role for setting up Docker from OS Repositories.
   company: ''
 
   issue_tracker_url: https://github.com/jam82/ansible-role-docker/issues

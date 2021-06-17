@@ -7,6 +7,10 @@
   become: true
   gather_facts: false
   tasks:
-    - name: "Assertions"
+    - name: "Run docker hello-world"
+      command: docker run hello-world
+      changed_when: false
+      register: _docker_hello_world
+    - name: "Assert Hello World in stdout"
       assert:
-        that: true
+        that: "'Hello' in _docker_hello_world.stdout"
