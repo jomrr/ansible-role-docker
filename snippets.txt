@@ -1,0 +1,43 @@
+# official docker ce
+
+_docker_remove:
+  default: []
+  Debian:
+    - docker
+    - docker-engine
+    - docker.io
+    - containerd
+    - runc
+  Fedora:
+    - docker
+    - docker-client
+    - docker-client-latest
+    - docker-common
+    - docker-latest
+    - docker-latest-logrotate
+    - docker-logrotate
+    - docker-selinux
+    - docker-engine-selinux
+    - docker-engine
+  RedHat:
+    - docker
+    - docker-client
+    - docker-client-latest
+    - docker-common
+    - docker-latest
+    - docker-latest-logrotate
+    - docker-logrotate
+    - docker-engine
+
+_docker_prerequisites:
+  default: []
+  Debian:
+    - apt-transport-https   # normally not needed, since Buster apt can do this.
+    - ca-certificates
+    - curl
+    - gnupg
+    - lsb-release
+  Fedora:
+    - dnf-plugins-core
+  RedHat:
+    - yum-utils

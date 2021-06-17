@@ -1,6 +1,6 @@
 ---
 # role: ansible-role-docker
-# file: vars/Alpine.yml
+# file: vars/main.yml
 
 _docker_packages:
   default: []
