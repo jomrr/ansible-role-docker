@@ -15,16 +15,7 @@ This role installs the following packages:
 - fuse-overlayfs
 
 Optionally you can install `docker-compose`
-and set configuration options for `/etc/docker/daemon.json`, as storage drivers, etc...
-
-Some notes about docker on btrfs/zfs:
-
-When using with zfs define the mountpoint of the dataset to `/var/lib/docker`.
-That is the easiest and least painless way.
-
-For btrfs use an own subvolume for docker `data-root`.
-You can create one or mount one at `/var/lib/docker`.
-Normally you want to mount one and not use the system drive.
+and set configuration options for `/etc/docker/daemon.json`, as storage drivers (btrfs, dm, zfs,), etc...
 
 ## Supported Platforms
 
@@ -50,7 +41,26 @@ Variables and defaults for this role.
 ### defaults/main.yml
 
 ```yaml
+---
+# role: ansible-role-docker
+# file: defaults/main.yml
+
+# The role is disabled by default, so you do not get in trouble.
+# Checked in tasks/main.yml which includes tasks/tasks.yml if enabled.
 docker_role_enabled: false
+
+# install docker compose.
+docker_compose: false
+
+# Docker daemon configuration. Write the config as dict in YAML notation.
+# It will be converted to JSON by the template.
+# see https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file
+# EXAMPLE:
+# docker_daemon:
+#   "storage-driver": "btrfs"
+#   "storage-opts":
+#     - "btrfs.min_space": "1G"
+docker_daemon: {}
 ```
 
 ## Dependencies
