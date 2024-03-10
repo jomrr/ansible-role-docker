@@ -1,9 +1,9 @@
 ---
-# role: ansible-role-docker
+# repo: ansible-role-docker
 # file: handlers/main.yml
 
-- name: restart and enable docker
-  service:
+- name: Restart and enable docker
+  ansible.builtin.service:
     name: docker
     enabled: true
     state: restarted

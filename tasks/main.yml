@@ -1,7 +1,40 @@
 ---
-# role: ansible-role-docker
+# name: ansible-role-docker
 # file: tasks/main.yml
 
-- name: "Check if ansible-role-docker is enabled"
-  include_tasks: tasks.yml
-  when: docker_role_enabled | bool
+- name: "Install packages for docker"
+  ansible.builtin.package:
+    name: "{{ _docker_packages }}"
+    state: present
+
+- name: "Install packages for docker-compose"
+  ansible.builtin.package:
+    name: "{{ _docker_compose_packages }}"
+    state: present
+  when: docker_compose | bool
+
+- name: "Ensure /etc/docker exists"
+  ansible.builtin.file:
+    path: /etc/docker
+    owner: root
+    group: docker
+    mode: "0750"
+    state: directory
+  when: docker_daemon | length > 0
+
+- name: "Remove /etc/docker/daemon.json if empty"
+  ansible.builtin.file:
+    path: /etc/docker/daemon.json
+    state: absent
+  notify: Restart and enable docker
+  when: docker_daemon | length == 0
+
+- name: "Configure docker daemon"
+  ansible.builtin.template:
+    src: etc/docker/daemon.json.j2
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: docker
+    mode: "0640"
+  notify: Restart and enable docker
+  when: docker_daemon | length > 0

@@ -1,8 +1,8 @@
 ---
-# role: ansible-role-docker
+# name: ansible-role-docker
 # file: vars/main.yml
 
-_docker_packages:
+__docker_packages:
   default: []
   Alpine:
     - docker
@@ -27,14 +27,12 @@ _docker_packages:
     - fuse-overlayfs
     - python3-docker
 
-docker_packages: >-
-  {{    _docker_packages[ansible_distribution]
-  if    _docker_packages[ansible_distribution] is defined
-  else  _docker_packages[ansible_os_family]
-  if    _docker_packages[ansible_os_family] is defined
-  else  _docker_packages['default'] }}
+_docker_packages: |
+  {{ __docker_packages[ansible_distribution]
+  if __docker_packages[ansible_distribution] is defined
+  else __docker_packages[ansible_os_family] }}
 
-_docker_compose_packages:
+__docker_compose_packages:
   default: []
   Alpine:
     - docker-compose
@@ -48,9 +46,7 @@ _docker_compose_packages:
   Suse:
     - python3-docker-compose
 
-docker_compose_packages: >-
-  {{    _docker_compose_packages[ansible_distribution]
-  if    _docker_compose_packages[ansible_distribution] is defined
-  else  _docker_compose_packages[ansible_os_family]
-  if    _docker_compose_packages[ansible_os_family] is defined
-  else  _docker_compose_packages['default'] }}
+_docker_compose_packages: |
+  {{ __docker_compose_packages[ansible_distribution]
+  if __docker_compose_packages[ansible_distribution] is defined
+  else  __docker_compose_packages[ansible_os_family] }}
