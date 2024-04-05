@@ -5,7 +5,7 @@ description = "Ansible role for setting up docker from os repositories."
 authors = ["Jonas Mauer"]
 license = "MIT"
 keywords = ["docker", "compose"]
-repository = "https://github.com/jam82/ansible-role-docker"
+repository = "https://github.com/jomrr/ansible-role-docker"
 
 [tool.commitizen]
 name = "cz_conventional_commits"

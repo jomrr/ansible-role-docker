@@ -1,15 +1,15 @@
 ---
-# name: jam82.docker
+# name: jomrr.docker
 # file: meta/main.yml
 
 galaxy_info:
-  namespace: jam82
+  namespace: jomrr
   role_name: docker
   author: Jonas Mauer
   company: none
   description: Ansible role for setting up docker from os repositories.
   license: MIT
-  issue_tracker_url: https://github.com/jam82/ansible-role-docker/issues
+  issue_tracker_url: https://github.com/jomrr/ansible-role-docker/issues
   min_ansible_version: "2.15"
   galaxy_tags:
     - docker
