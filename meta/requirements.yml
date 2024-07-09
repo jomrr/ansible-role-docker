@@ -1,5 +1,0 @@
----
-# name: jomrr.docker
-# file: meta/requirements.yml
-
-- name: community.general
